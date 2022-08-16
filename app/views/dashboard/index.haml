@@ -1,0 +1,12 @@
+
+#wrapper
+  #content-wrapper
+    .content-fluid
+      .row
+        .col
+          = line_chart @reports.map { |report| { name: report.store_name } } 
+        .col
+          .card
+            .card-body
+              %h5.card-title Inventory Updates
+              .card-text#updates

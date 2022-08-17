@@ -8,15 +8,16 @@ consumer.subscriptions.create("InventoryUpdatesChannel", {
 
     ws.onmessage = function(event) {
       var data = JSON.parse(event.data);
-      console.log(event.data);
-      var updatesElement = document.getElementById('updates');
-      updatesElement.innerHTML += `
-        <div>
-          <h2>${data.store}</h2>
-          <p>Shoe model: ${data.model}</p>
-          <p>Inventory: ${data.inventory}</p>
-        </div>
+      console.log(data);
+      var updatesTable = document.getElementById('updates');
+      var newRow = `
+        <tr class='align-left small'>
+          <td class='align-left'>${data.store}</td>
+          <td class='align-left'>${data.model}</td>
+          <td class='align-left'>${data.inventory}</td>
+        </tr>
       `;
+      updatesTable.insertAdjacentHTML('afterBegin', newRow);
     };
   },
 

@@ -1,12 +1,24 @@
-
-#wrapper
-  #content-wrapper
-    .content-fluid
+.profile-page
+  .page-header
+    .container 
       .row
-        .col
-          = line_chart @reports
-        .col
-          .card
-            .card-body
-              %h5.card-title Inventory Updates
-              .card-text#updates
+        .col-md-8-ml-auto-mr-auto 
+          %h1 Inventory Updates
+  .main.main-raised
+    .container
+      .section
+        .features
+          .row
+            .col-7
+              = line_chart @reports
+            .col-5
+              .container
+                %table.table.table-hover
+                  %thead
+                    %tr
+                      %th Store Name
+                      %th Shoe Model
+                      %th Inventory
+              .container{style: 'max-height: 450px; overflow: scroll;'}
+                %table.table.table-hover
+                  %tbody.table-wrapper#updates

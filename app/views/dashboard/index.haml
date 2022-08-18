@@ -10,7 +10,8 @@
         .features
           .row
             .col-7
-              = line_chart @reports
+              -# = column_chart @shoes, stacked: true, height: '550px'
+              = bar_chart @shoes, stacked: true, height: '550px'
             .col-5
               .container
                 %table.table.table-hover

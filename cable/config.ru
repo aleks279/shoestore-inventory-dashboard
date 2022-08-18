@@ -10,15 +10,7 @@ EM.run {
   ws = Faye::WebSocket::Client.new('ws://localhost:8080/')
 
   ws.on :message do |event|
-    report = InventoryReport.create!(JSON.parse(event.data).to_hash)
-
-    ActionCable.server.broadcast(
-      'InventoryUpdatesChannel',
-      {
-        store: report.store,
-        model: report.model,
-        inventory: report.inventory
-      }
-    )
+    data = JSON.parse(event.data)
+    InventoryReportCreator.call(store: data['store'], model: data['model'], inventory: data['inventory'])
   end
 }

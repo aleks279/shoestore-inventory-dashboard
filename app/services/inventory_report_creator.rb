@@ -1,4 +1,4 @@
-class InventoryReportCreator
+class InventoryReportCreator < BaseService
   attr_reader :store, :model, :inventory
 
   def initialize(store:, model:, inventory:)
@@ -7,14 +7,15 @@ class InventoryReportCreator
     @inventory = inventory
   end
 
-  def create
-    update = InventoryReport.create!(store: @store, model: @model, inventory: @inventory)
+  def call
+    new_store = Store.where(name: store).first_or_create!(name: store)
+    shoe_model = new_store.shoes.first_or_create(model: model)
+    shoe_model.update!(inventory: inventory)
 
     ActionCable.server.broadcast('InventoryUpdatesChannel', {
-      id: update.id,
-      store: update.store,
-      model: update.model,
-      inventory: update.inventory
+      store: new_store.name,
+      model: shoe_model.model,
+      inventory: shoe_model.inventory
     })
   end
 end

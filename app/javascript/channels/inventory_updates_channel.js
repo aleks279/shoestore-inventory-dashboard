@@ -3,7 +3,7 @@ import consumer from "channels/consumer"
 consumer.subscriptions.create("InventoryUpdatesChannel", {
   connected() {
     // Called when the subscription is ready for use on the server
-    console.log('Connected to channel...')
+    console.log('Connected to InventoryUpdatesChannel')
   },
 
   disconnected() {

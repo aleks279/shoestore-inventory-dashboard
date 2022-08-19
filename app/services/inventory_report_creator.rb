@@ -17,5 +17,11 @@ class InventoryReportCreator < BaseService
       model: shoe_model.model,
       inventory: shoe_model.inventory
     })
+
+    ActionCable.server.broadcast('InventoryAlertsChannel', {
+      store: new_store.name,
+      model: shoe_model.model,
+      inventory: shoe_model.inventory
+    }) if shoe_model.inventory < 20
   end
 end

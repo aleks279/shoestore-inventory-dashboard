@@ -1,25 +1,27 @@
 .profile-page
-  .page-header
+  .page-header{"data-parallax" => "true", :style => "background-image: url(#{image_path("nike-shoes")})"}
     .container 
       .row
         .col-md-8-ml-auto-mr-auto 
           %h1 Inventory Updates
   .main.main-raised
-    .container
-      .section
-        .features
-          .row
-            .col-7
-              -# = column_chart @shoes, stacked: true, height: '550px'
-              = bar_chart @shoes, stacked: true, height: '550px'
-            .col-5
-              .container
-                %table.table.table-hover
-                  %thead
-                    %tr
-                      %th Store Name
-                      %th Shoe Model
-                      %th Inventory
-              .container{style: 'max-height: 450px; overflow: scroll;'}
-                %table.table.table-hover
-                  %tbody.table-wrapper#updates
+    .section
+      .features
+        .row
+          .col-4
+            -# = column_chart @shoes, stacked: true, height: '550px'
+            = bar_chart @shoes, stacked: true, height: '550px'
+          .col-4
+            .container
+              %table.table.table-hover
+                %thead
+                  %tr
+                    %th Store Name
+                    %th Shoe Model
+                    %th Inventory
+            .container{style: 'max-height: 450px; overflow: scroll;'}
+              %table.table.table-hover
+                %tbody.table-wrapper#updates
+          .col-4
+            %h3 Alerts
+            %ul#alerts

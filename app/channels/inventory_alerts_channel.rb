@@ -1,6 +1,6 @@
 class InventoryAlertsChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "InventoryAlertsChannel"
+    stream_from 'InventoryAlertsChannel'
   end
 
   def unsubscribed

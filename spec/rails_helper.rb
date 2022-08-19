@@ -1,24 +1,24 @@
 # frozen_string_literal: true
 
-ENV["RAILS_ENV"] ||= "test"
-require File.expand_path("../config/environment", __dir__)
-Dir[Rails.root.join("spec", "support", "**", "*.rb")].each { |f| require f }
+ENV['RAILS_ENV'] ||= 'test'
+require File.expand_path('../config/environment', __dir__)
+Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
 
-abort("The Rails environment is running in production mode!") if Rails.env.production?
-require "spec_helper"
-require "rspec/rails"
-require "rspec/its"
-require "shoulda/matchers"
-require "action_cable/testing/rspec"
-require "simplecov"
+abort('The Rails environment is running in production mode!') if Rails.env.production?
+require 'spec_helper'
+require 'rspec/rails'
+require 'rspec/its'
+require 'shoulda/matchers'
+require 'action_cable/testing/rspec'
+require 'simplecov'
 
 SimpleCov.start do
-  add_group "Controllers", "app/controllers"
-  add_group "Helpers", "app/helpers"
-  add_group "Mailers", "app/mailers"
-  add_group "Models", "app/models"
-  add_group "Jobs", "app/jobs"
-  add_group "Libraries", "app/lib"
+  add_group 'Controllers', 'app/controllers'
+  add_group 'Helpers', 'app/helpers'
+  add_group 'Mailers', 'app/mailers'
+  add_group 'Models', 'app/models'
+  add_group 'Jobs', 'app/jobs'
+  add_group 'Libraries', 'app/lib'
 end
 
 ActiveRecord::Migration.maintain_test_schema!

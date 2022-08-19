@@ -41,7 +41,7 @@ describe InventoryReportCreator do
         context 'when inventory is too low (< 20)' do
           let(:inventory) { 10 }
 
-          it { expect { call }.to have_broadcasted_to('InventoryAlertsChannel').with(broadcast_data) }          
+          it { expect { call }.to have_broadcasted_to('InventoryAlertsChannel').with(broadcast_data) }
         end
       end
     end

@@ -61,7 +61,7 @@ group :development, :test do
   gem "rspec-its"
   gem "rspec-rails"
   gem "rspec_junit_formatter"
-
+  gem "action-cable-testing"
   gem "database_cleaner"
   gem "shoulda-callback-matchers", "~> 1.1.1"
   gem "shoulda-matchers"
